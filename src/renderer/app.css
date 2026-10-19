@@ -1,0 +1,223 @@
+/* Flight Compare's own layout and flight rows, on top of pomerado-app-kit's styles. */
+
+.fc-plane {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  color: var(--pk-ink);
+  transform: rotate(45deg);
+}
+
+.fc-layout {
+  display: grid;
+  gap: 28px;
+}
+
+.fc-ask {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.fc-title {
+  color: var(--pk-ink);
+  font-size: 26px;
+  font-weight: 680;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+.fc-lede {
+  margin-bottom: 8px;
+  color: var(--pk-body);
+}
+
+.fc-stop {
+  justify-self: center;
+}
+
+.fc-ask,
+.fc-results {
+  min-width: 0;
+}
+
+.fc-results {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  scroll-margin-top: 72px;
+}
+
+.fc-placeholder {
+  display: grid;
+  gap: 6px;
+  padding: 28px 20px;
+  border: 1px dashed var(--pk-rule-strong);
+  border-radius: var(--pk-radius);
+  background: var(--pk-band);
+}
+
+.fc-placeholder-title {
+  color: var(--pk-ink);
+  font-weight: 650;
+}
+
+.fc-placeholder-body {
+  color: var(--pk-muted);
+  font-size: 14px;
+}
+
+.fc-list {
+  display: grid;
+  gap: 10px;
+}
+
+.fc-rule {
+  color: var(--pk-muted);
+  font-size: 13px;
+}
+
+.fc-times {
+  white-space: nowrap;
+}
+
+.fc-day {
+  margin-left: 1px;
+  font-size: 0.68em;
+  font-weight: 600;
+}
+
+.fc-carrier {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: none;
+  place-items: center;
+  border: 1px solid var(--pk-rule);
+  border-radius: 10px;
+  background: var(--pk-band);
+  color: var(--pk-ink);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.fc-flight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fc-flight-times {
+  color: var(--pk-ink);
+  font-size: 15px;
+  font-weight: 620;
+  font-variant-numeric: tabular-nums;
+}
+
+.fc-flight-meta {
+  color: var(--pk-muted);
+  font-size: 13px;
+}
+
+.fc-cash {
+  display: grid;
+  justify-items: end;
+  gap: 2px;
+  text-align: right;
+}
+
+.fc-cash-amount {
+  color: var(--pk-ink);
+  font-size: 17px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.fc-cash-source {
+  font-size: 12px;
+}
+
+.fc-none {
+  color: var(--pk-faint);
+  font-size: 13px;
+}
+
+.fc-awards {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fc-award {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 8px;
+  font-size: 14px;
+}
+
+.fc-award-points {
+  font-variant-numeric: tabular-nums;
+}
+
+.fc-award-taxes {
+  color: var(--pk-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.fc-cpp {
+  color: var(--pk-body);
+  font-size: 13px;
+  font-weight: 550;
+}
+
+.fc-tag {
+  padding: 1px 7px;
+  border: 1px solid var(--pk-rule);
+  border-radius: 999px;
+  color: var(--pk-muted);
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.fc-card {
+  display: grid;
+  gap: 12px;
+}
+
+.fc-card-top {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: start;
+  gap: 12px;
+}
+
+.fc-card-text {
+  min-width: 0;
+}
+
+.fc-card-awards {
+  padding-top: 10px;
+  border-top: 1px solid var(--pk-rule);
+}
+
+@media (min-width: 960px) {
+  .fc-layout {
+    grid-template-columns: minmax(320px, 380px) 1fr;
+    align-items: start;
+    gap: 40px;
+  }
+
+  .fc-ask {
+    position: sticky;
+    top: 84px;
+  }
+
+  .fc-title {
+    font-size: 30px;
+  }
+}

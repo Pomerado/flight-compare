@@ -1,0 +1,73 @@
+{
+  "origin": "SFO",
+  "destination": "JFK",
+  "departure_date": "2026-12-08",
+  "cabin": "economy",
+  "search_url": "https://www.delta.com/flight-search/search-results",
+  "flights": [
+    {
+      "airline": "Delta",
+      "flight_numbers": [
+        "DL 1102",
+        "DL 2210"
+      ],
+      "origin_airport": "SFO",
+      "destination_airport": "JFK",
+      "departure_time": "6:05 AM",
+      "arrival_time": "4:48 PM",
+      "departure_date": "2026-12-08",
+      "arrival_date": "2026-12-08",
+      "duration_minutes": 463,
+      "stops": 1,
+      "connections": [
+        {
+          "airport": "MSP"
+        }
+      ],
+      "cabin": "economy",
+      "miles": 14500,
+      "taxes_minor": 560,
+      "currency": "USD"
+    },
+    {
+      "airline": "Delta",
+      "flight_numbers": [
+        "DL 432"
+      ],
+      "origin_airport": "SFO",
+      "destination_airport": "JFK",
+      "departure_time": "11:59 PM",
+      "arrival_time": "8:25 AM",
+      "departure_date": "2026-12-08",
+      "arrival_date": "2026-12-09",
+      "duration_minutes": 326,
+      "stops": 0,
+      "connections": [],
+      "cabin": "economy",
+      "miles": 25000,
+      "taxes_minor": 560,
+      "currency": "USD"
+    },
+    {
+      "airline": "Delta",
+      "flight_numbers": [
+        "DL 1880"
+      ],
+      "origin_airport": "SFO",
+      "destination_airport": "JFK",
+      "departure_time": "2:30 PM",
+      "arrival_time": "11:05 PM",
+      "departure_date": "2026-12-08",
+      "arrival_date": "2026-12-08",
+      "duration_minutes": 335,
+      "stops": 0,
+      "connections": [],
+      "cabin": "economy",
+      "miles": 18000,
+      "taxes_minor": 560,
+      "currency": "USD"
+    }
+  ],
+  "next_cursor": null,
+  "next_cursor_expires_at": null
+}

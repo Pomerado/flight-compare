@@ -1,0 +1,54 @@
+{
+  "origin": "SFO",
+  "destination": "JFK",
+  "departure_date": "2026-12-08",
+  "cabin": "economy",
+  "search_url": "https://www.aa.com/booking/search",
+  "flights": [
+    {
+      "airline": "American",
+      "flight_numbers": [
+        "AA 2311",
+        "AA 1544"
+      ],
+      "origin_airport": "SFO",
+      "destination_airport": "JFK",
+      "departure_time": "1:45 PM",
+      "arrival_time": "11:58 PM",
+      "departure_date": "2026-12-08",
+      "arrival_date": "2026-12-08",
+      "duration_minutes": 433,
+      "stops": 1,
+      "connections": [
+        {
+          "airport": "ORD"
+        }
+      ],
+      "cabin": "economy",
+      "miles": 12500,
+      "taxes_minor": 560,
+      "currency": "USD"
+    },
+    {
+      "airline": "American",
+      "flight_numbers": [
+        "AA 178"
+      ],
+      "origin_airport": "SFO",
+      "destination_airport": "JFK",
+      "departure_time": "9:40 AM",
+      "arrival_time": "6:21 PM",
+      "departure_date": "2026-12-08",
+      "arrival_date": "2026-12-08",
+      "duration_minutes": 341,
+      "stops": 0,
+      "connections": [],
+      "cabin": "economy",
+      "miles": 22500,
+      "taxes_minor": 560,
+      "currency": "USD"
+    }
+  ],
+  "next_cursor": null,
+  "next_cursor_expires_at": null
+}

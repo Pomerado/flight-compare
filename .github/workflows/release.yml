@@ -1,0 +1,87 @@
+# Builds unsigned Flight Compare downloads for macOS and Windows when a version tag is pushed,
+# and attaches them to a draft GitHub release. The apps are open source and ship unsigned; the
+# README explains how to open them.
+name: Release (unsigned)
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+            target: mac
+          - os: windows-latest
+            target: win
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Check out Flight Compare
+        uses: actions/checkout@v4
+        with:
+          path: flight-compare
+
+      # The app depends on the kit as a sibling folder (file:../pomerado-app-kit).
+      # TODO: depend on the published pomerado-app-kit package instead, and drop this step.
+      - name: Check out pomerado-app-kit
+        uses: actions/checkout@v4
+        with:
+          repository: Pomerado/pomerado-app-kit
+          path: pomerado-app-kit
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Build the kit
+        working-directory: pomerado-app-kit
+        run: |
+          npm ci
+          npm run build
+
+      - name: Install
+        working-directory: flight-compare
+        run: npm ci
+
+      - name: Build the unsigned app
+        working-directory: flight-compare
+        env:
+          # No signing identity: never look for one in the keychain.
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
+        run: npm run dist:${{ matrix.target }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: flight-compare-${{ matrix.target }}
+          if-no-files-found: error
+          path: |
+            flight-compare/release/*.dmg
+            flight-compare/release/*.zip
+            flight-compare/release/*.exe
+
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - name: Attach the downloads to a draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" artifacts/* \
+            --repo "${GITHUB_REPOSITORY}" \
+            --draft \
+            --title "Flight Compare ${GITHUB_REF_NAME}" \
+            --notes "Unsigned builds for macOS and Windows. See the README for how to open an unsigned app."
