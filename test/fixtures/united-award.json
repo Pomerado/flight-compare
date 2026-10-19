@@ -1,0 +1,121 @@
+{
+  "search": {
+    "origin": "SFO",
+    "destination": "EWR",
+    "departure_date": "2026-12-08",
+    "adults": 1,
+    "cabin": "Economy",
+    "payment": "miles",
+    "trip_type": "One-way"
+  },
+  "applied_filters": [],
+  "results_url": "https://www.united.com/en/us/fsr/choose-flights",
+  "itineraries": [
+    {
+      "key": "2026-12-08-UA1234",
+      "origin": "SFO",
+      "destination": "EWR",
+      "departure_time": "7:30 AM",
+      "arrival_time": "4:05 PM",
+      "arrival_date_note": null,
+      "stops": 0,
+      "connection_airports": [],
+      "duration_minutes": 335,
+      "segments": [
+        {
+          "flight_number": "UA 1234",
+          "aircraft": "Boeing 777",
+          "origin": "SFO",
+          "destination": "EWR",
+          "departure_time": "7:30 AM",
+          "arrival_time": "4:05 PM",
+          "duration_minutes": 335,
+          "operating_carrier": "United Airlines",
+          "advisories": []
+        }
+      ],
+      "award_fares": [
+        {
+          "column": "Basic Economy",
+          "available": false,
+          "miles_per_person": null,
+          "taxes_fees_per_person": null,
+          "currency": null,
+          "cabin_description": null,
+          "availability_notes": [
+            "Not available"
+          ]
+        },
+        {
+          "column": "Economy",
+          "available": true,
+          "miles_per_person": 17500,
+          "taxes_fees_per_person": 5.6,
+          "currency": "$",
+          "cabin_description": "United Economy (X)",
+          "availability_notes": []
+        },
+        {
+          "column": "Premium Economy",
+          "available": true,
+          "miles_per_person": 35000,
+          "taxes_fees_per_person": 5.6,
+          "currency": "$",
+          "cabin_description": null,
+          "availability_notes": []
+        },
+        {
+          "column": "Business/First (lowest)",
+          "available": true,
+          "miles_per_person": 60000,
+          "taxes_fees_per_person": 5.6,
+          "currency": "$",
+          "cabin_description": null,
+          "availability_notes": []
+        }
+      ]
+    },
+    {
+      "key": "2026-12-08-UA2",
+      "origin": "SFO",
+      "destination": "EWR",
+      "departure_time": "10:45 PM",
+      "arrival_time": "7:10 AM",
+      "arrival_date_note": "Arrives Wed, Dec 9",
+      "stops": 0,
+      "connection_airports": [],
+      "duration_minutes": 325,
+      "segments": [
+        {
+          "flight_number": "UA 2",
+          "aircraft": "Boeing 767",
+          "origin": "SFO",
+          "destination": "EWR",
+          "departure_time": "10:45 PM",
+          "arrival_time": "7:10 AM",
+          "duration_minutes": 325,
+          "operating_carrier": "United Airlines",
+          "advisories": [
+            "Arrives next day"
+          ]
+        }
+      ],
+      "award_fares": [
+        {
+          "column": "Economy",
+          "available": true,
+          "miles_per_person": 22500,
+          "taxes_fees_per_person": 5.6,
+          "currency": "$",
+          "cabin_description": null,
+          "availability_notes": []
+        }
+      ]
+    }
+  ],
+  "next_cursor": null,
+  "next_cursor_expires_at": null,
+  "has_more": false,
+  "total_results": 2,
+  "list_changed": false
+}

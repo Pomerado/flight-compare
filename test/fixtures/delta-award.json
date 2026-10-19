@@ -2,72 +2,116 @@
   "origin": "SFO",
   "destination": "JFK",
   "departure_date": "2026-12-08",
-  "cabin": "economy",
-  "search_url": "https://www.delta.com/flight-search/search-results",
+  "trip_type": "One Way",
+  "adults": 1,
+  "cabin": "Main",
+  "price_mode": "Miles",
+  "include_basic": false,
+  "refundable_only": false,
+  "nearby_airports": false,
+  "sort": "Best Match",
+  "selected_stops": [],
+  "selected_arrival_airports": [],
+  "selected_connection_airports": [],
+  "min_layover_hours": 0,
+  "max_layover_hours": 0,
+  "min_miles": 0,
+  "max_miles": 0,
+  "total_results": 3,
+  "results_url": "https://www.delta.com/flightsearch/search-results",
   "flights": [
     {
-      "airline": "Delta",
       "flight_numbers": [
-        "DL 1102",
-        "DL 2210"
+        "DL1102",
+        "DL2210"
       ],
-      "origin_airport": "SFO",
-      "destination_airport": "JFK",
-      "departure_time": "6:05 AM",
-      "arrival_time": "4:48 PM",
-      "departure_date": "2026-12-08",
-      "arrival_date": "2026-12-08",
+      "origin": "SFO",
+      "destination": "JFK",
+      "departure_time": "6:05am",
+      "arrival_time": "4:48pm",
+      "arrival_day": null,
       "duration_minutes": 463,
       "stops": 1,
-      "connections": [
-        {
-          "airport": "MSP"
-        }
+      "connection_airports": [
+        "MSP"
       ],
-      "cabin": "economy",
-      "miles": 14500,
-      "taxes_minor": 560,
-      "currency": "USD"
+      "badges": [],
+      "fares": [
+        {
+          "cabin": "Delta Main",
+          "miles": 14500,
+          "taxes_minor": 560,
+          "currency": "USD",
+          "availability": "Available"
+        },
+        {
+          "cabin": "Delta Comfort+",
+          "miles": 21000,
+          "taxes_minor": 560,
+          "currency": "USD",
+          "availability": "Available"
+        },
+        {
+          "cabin": "Delta First",
+          "miles": 52000,
+          "taxes_minor": 560,
+          "currency": "USD",
+          "availability": "Available"
+        }
+      ]
     },
     {
-      "airline": "Delta",
       "flight_numbers": [
-        "DL 432"
+        "DL432"
       ],
-      "origin_airport": "SFO",
-      "destination_airport": "JFK",
-      "departure_time": "11:59 PM",
-      "arrival_time": "8:25 AM",
-      "departure_date": "2026-12-08",
-      "arrival_date": "2026-12-09",
+      "origin": "SFO",
+      "destination": "JFK",
+      "departure_time": "11:59pm",
+      "arrival_time": "8:25am",
+      "arrival_day": "+1 day",
       "duration_minutes": 326,
       "stops": 0,
-      "connections": [],
-      "cabin": "economy",
-      "miles": 25000,
-      "taxes_minor": 560,
-      "currency": "USD"
+      "connection_airports": [],
+      "badges": [],
+      "fares": [
+        {
+          "cabin": "Delta Main",
+          "miles": 25000,
+          "taxes_minor": 560,
+          "currency": "USD",
+          "availability": "Available"
+        },
+        {
+          "cabin": "Delta One",
+          "miles": 90000,
+          "taxes_minor": 560,
+          "currency": "USD",
+          "availability": "Available"
+        }
+      ]
     },
     {
-      "airline": "Delta",
       "flight_numbers": [
-        "DL 1880"
+        "DL1880"
       ],
-      "origin_airport": "SFO",
-      "destination_airport": "JFK",
-      "departure_time": "2:30 PM",
-      "arrival_time": "11:05 PM",
-      "departure_date": "2026-12-08",
-      "arrival_date": "2026-12-08",
+      "origin": "SFO",
+      "destination": "JFK",
+      "departure_time": "2:30pm",
+      "arrival_time": "11:05pm",
+      "arrival_day": null,
       "duration_minutes": 335,
       "stops": 0,
-      "connections": [],
-      "cabin": "economy",
-      "miles": 18000,
-      "taxes_minor": 560,
-      "currency": "USD"
+      "connection_airports": [],
+      "badges": [],
+      "fares": [
+        {
+          "cabin": "Delta Main",
+          "miles": 18000,
+          "taxes_minor": 560,
+          "currency": "USD",
+          "availability": "Available"
+        }
+      ]
     }
-  ],
-  "next_cursor": null,
-  "next_cursor_expires_at": null
+  ]
 }

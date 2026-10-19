@@ -5,8 +5,9 @@ import type { AwardPrice, CashPrice, FlightOption, Source } from "./flights.js";
  * - The same flight from several sites becomes one row, its cash fare and award prices side by side.
  * - Rows with a cash fare come first, lowest fare first. Rows with only award prices follow,
  *   fewest points first. Ties go to fewer stops, then shorter flights, then earlier departures.
- * - Cents per point shows only when a row has a cash fare and an award price for the same trip
- *   (both one-way), with taxes in the fare's currency.
+ * - Cents per point shows only when a row has a cash fare and an award price for the same one-way
+ *   trip, with taxes in the fare's currency. Both are totals for the whole party. Round-trip
+ *   prices are starting prices with no return picked, so they get none.
  */
 
 export type RowCash = CashPrice & { source: Source };
@@ -23,10 +24,17 @@ export type FlightRow = {
   centsPerPoint: { program: string; cents: number }[];
 };
 
-/** Rows are the same flight when airline, departure and arrival match, and flight numbers don't differ. */
+/**
+ * Rows are the same flight when airline, departure and arrival clock times match, and flight
+ * numbers don't differ. Arrival days are left out, since some sites don't print them.
+ */
 function sameFlight(a: FlightOption, b: FlightOption) {
-  if (a.carrierCode === null || a.departMinutes === null || a.arriveMinutes === null) return false;
-  if (a.carrierCode !== b.carrierCode || a.departMinutes !== b.departMinutes || a.arriveMinutes !== b.arriveMinutes) {
+  if (a.carrierCode === null || a.departMinutes === null || a.arriveMinutes === null || b.arriveMinutes === null) return false;
+  if (
+    a.carrierCode !== b.carrierCode ||
+    a.departMinutes !== b.departMinutes ||
+    a.arriveMinutes % 1440 !== b.arriveMinutes % 1440
+  ) {
     return false;
   }
   if (a.flightNumbers.length > 0 && b.flightNumbers.length > 0) {

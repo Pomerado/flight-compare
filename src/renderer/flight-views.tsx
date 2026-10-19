@@ -76,6 +76,7 @@ function AwardLines({ row }: { row: FlightRow }) {
             </SourceLink>
             {taxes ? <span className="fc-award-taxes">{taxes}</span> : null}
             {award.scope === "outbound_only" ? <span className="fc-tag">{R.outboundOnly}</span> : null}
+            {award.scope === "round_trip" ? <span className="fc-tag">{R.roundTrip}</span> : null}
             {value ? <span className="fc-cpp">{R.centsPerPoint(centsText(value.cents))}</span> : null}
           </li>
         );

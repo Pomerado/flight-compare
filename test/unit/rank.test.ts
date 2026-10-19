@@ -65,6 +65,14 @@ describe("lineUp", () => {
     expect(joined).toBeUndefined();
   });
 
+  it("matches arrivals by clock time, since some sites don't print the arrival day", () => {
+    const rows = lineUp([
+      flight({ price: usd(28400), departMinutes: 1439, arriveMinutes: 505 }),
+      flight({ price: miles(25000), departMinutes: 1439, arriveMinutes: 505 + 1440 }),
+    ]);
+    expect(rows).toHaveLength(1);
+  });
+
   it("never merges flights it can't identify", () => {
     const rows = lineUp([flight({ price: usd(100), carrierCode: null }), flight({ price: miles(1000), carrierCode: null })]);
     expect(rows).toHaveLength(2);

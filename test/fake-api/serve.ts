@@ -11,11 +11,11 @@ const api = await startFakeApi(
   {
     tools: {
       [TOOLS.googleFlights]: quick(6000, RESULTS.googleFlights),
-      [TOOLS.googleFlightsRoundTrip]: quick(7000, RESULTS.googleFlights),
+      [TOOLS.googleFlightsRoundTrip]: quick(7000, RESULTS.googleFlightsRoundTrip),
       [TOOLS.delta]: quick(2500, RESULTS.delta),
-      [TOOLS.deltaRoundTrip]: quick(2500, RESULTS.delta),
+      [TOOLS.deltaRoundTrip]: quick(2500, RESULTS.deltaRoundTrip),
       [TOOLS.american]: quick(3500, RESULTS.american),
-      [TOOLS.americanRoundTrip]: quick(3500, RESULTS.american),
+      [TOOLS.americanRoundTrip]: quick(3500, RESULTS.americanRoundTrip),
     },
   },
   4010,

@@ -110,14 +110,16 @@ test("leaving cancels every search still running", async () => {
     tools: {
       [TOOLS.googleFlightsRoundTrip]: { runMs: 60_000, outcome: "never" },
       [TOOLS.deltaRoundTrip]: { runMs: 60_000, outcome: "never" },
-      [TOOLS.americanRoundTrip]: { runMs: 400, outcome: "succeeded", result: RESULTS.american },
+      [TOOLS.americanRoundTrip]: { runMs: 400, outcome: "succeeded", result: RESULTS.americanRoundTrip },
     },
   });
   await search(page, { returnDate: daysAhead(37) });
   await expect(site(page, "american")).toContainText("2 flights");
-  // Round-trip award prices cover the outbound flight only, and say so.
-  await expect(page.getByText("Award prices are for the outbound flight only.")).toBeVisible();
-  await expect(page.getByRole("table")).toContainText("Outbound only");
+  // Round-trip rows are outbound flights priced for the whole trip, and say so.
+  await expect(page.getByText(/starting price for the whole round trip/)).toBeVisible();
+  await expect(page.getByRole("table")).toContainText("25,000 American miles");
+  await expect(page.getByRole("table")).toContainText("Round trip");
+  await expect(page.getByRole("table")).not.toContainText("cents a point");
   await expect.poll(() => api.startedJobs().length).toBe(3);
   // A return date picks each site's round-trip tool.
   expect(api.startedJobs().map((job) => job.toolId).sort()).toEqual(

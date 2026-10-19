@@ -1,6 +1,6 @@
 import type { FieldOptions, InputSchema } from "pomerado-app-kit/shared";
 import { COPY } from "./copy.js";
-import { normalizeAward, normalizeGoogleFlights, type FlightOption } from "./flights.js";
+import type { FlightOption } from "./flights.js";
 import type { SiteTool } from "./tools.js";
 
 /**
@@ -78,7 +78,7 @@ export function runFor(site: SiteTool, ask: Ask, timeoutOverrideMs: number | nul
     destination: ask.destination,
     departure_date: ask.departure_date,
     adults: ask.adults,
-    cabin: ask.cabin,
+    cabin: site.cabinInput?.[ask.cabin] ?? ask.cabin,
     ...(roundTrip ? { return_date: ask.return_date } : {}),
   };
   return {
@@ -90,16 +90,14 @@ export function runFor(site: SiteTool, ask: Ask, timeoutOverrideMs: number | nul
   };
 }
 
-/** A site's result pages as flights. */
+/** A site's result pages as flights, each page read by the site's normalizer for this trip. */
 export function flightsFrom(site: SiteTool, pages: unknown[], ask: Ask): FlightOption[] {
-  const roundTrip = ask.return_date !== undefined;
-  return pages.flatMap((page, pageIndex) => {
-    const context = { key: `${site.alias}-${pageIndex}`, label: site.label, scope: roundTrip ? site.roundTripScope : "one_way" } as const;
-    const flights =
-      site.kind === "cash"
-        ? normalizeGoogleFlights(page, context)
-        : normalizeAward(page, { ...context, program: site.program ?? site.alias, cabin: ask.cabin });
-    // Keep the source's key the site's own, so links and labels don't depend on the page.
-    return flights.map((flight) => ({ ...flight, source: { ...flight.source, key: site.alias } }));
-  });
+  const normalize = ask.return_date !== undefined ? site.normalize.roundTrip : site.normalize.oneWay;
+  if (!normalize) return [];
+  return pages.flatMap((page, pageIndex) =>
+    normalize(page, { key: `${site.alias}-${pageIndex}`, label: site.label, adults: ask.adults, cabin: ask.cabin }).map(
+      // Keep the source's key the site's own, so links and labels don't depend on the page.
+      (flight) => ({ ...flight, source: { ...flight.source, key: site.alias } }),
+    ),
+  );
 }

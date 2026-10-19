@@ -1,0 +1,82 @@
+{
+  "origin": "SFO",
+  "destination": "JFK",
+  "departure_date": "2026-12-08",
+  "return_date": "2026-12-15",
+  "adults": 1,
+  "trip_type": "Round trip",
+  "cabin": "economy",
+  "result_count": 2,
+  "applied_filters": [],
+  "flights": [
+    {
+      "origin": "SFO",
+      "destination": "JFK",
+      "departure_time": "1:45 PM",
+      "arrival_time": "11:58 PM",
+      "departure_time_24h": "13:45",
+      "arrival_time_24h": "23:58",
+      "arrival_day_offset": 0,
+      "duration_minutes": 433,
+      "stops": 1,
+      "connections": [
+        "ORD Chicago O'Hare"
+      ],
+      "segments": [
+        {
+          "flight_number": "AA 2311",
+          "aircraft": "Boeing 737",
+          "route": null,
+          "operated_by": null,
+          "amenities": []
+        },
+        {
+          "flight_number": "AA 1544",
+          "aircraft": "Boeing 737",
+          "route": null,
+          "operated_by": null,
+          "amenities": []
+        }
+      ],
+      "cabin": "Main",
+      "availability": "Available",
+      "miles": 25000,
+      "taxes_display": "$11.20",
+      "taxes_amount": 11.2,
+      "currency_symbol": "$",
+      "price_scope": "Round trip",
+      "seats_remaining": null,
+      "notices": []
+    },
+    {
+      "origin": "SFO",
+      "destination": "JFK",
+      "departure_time": "9:40 AM",
+      "arrival_time": "6:21 PM",
+      "departure_time_24h": "09:40",
+      "arrival_time_24h": "18:21",
+      "arrival_day_offset": 0,
+      "duration_minutes": 341,
+      "stops": 0,
+      "connections": [],
+      "segments": [
+        {
+          "flight_number": "AA 178",
+          "aircraft": "Boeing 737",
+          "route": null,
+          "operated_by": null,
+          "amenities": []
+        }
+      ],
+      "cabin": "Main",
+      "availability": "Available",
+      "miles": 45000,
+      "taxes_display": "$11.20",
+      "taxes_amount": 11.2,
+      "currency_symbol": "$",
+      "price_scope": "Round trip",
+      "seats_remaining": null,
+      "notices": []
+    }
+  ]
+}

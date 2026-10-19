@@ -1,15 +1,26 @@
 import { COPY } from "./copy.js";
+import {
+  normalizeAmericanOneWay,
+  normalizeAmericanRoundTrip,
+  normalizeDeltaOneWay,
+  normalizeDeltaRoundTrip,
+  normalizeGoogleFlights,
+  normalizeGoogleFlightsRoundTrip,
+  normalizeUnited,
+  type Cabin,
+  type FlightOption,
+  type NormalizeContext,
+} from "./flights.js";
 
 /**
  * The sites Flight Compare searches: each one a public Pomerado tool, by alias. The ids are the
  * same in production and staging, and every tool here is read-only. A return date picks each
- * site's round-trip tool.
+ * site's round-trip tool. Each tool has its own result shape, read by its own normalizer.
  */
 
 export type SiteKind = "cash" | "award";
 
-/** What a site's prices cover when the trip is round: the whole trip, or the outbound flight only. */
-export type RoundTripScope = "round_trip" | "outbound_only";
+export type Normalizer = (result: unknown, context: NormalizeContext) => FlightOption[];
 
 export type SiteTool = {
   alias: string;
@@ -19,7 +30,9 @@ export type SiteTool = {
   program?: keyof typeof COPY.programs;
   oneWay: string;
   roundTrip: string | null;
-  roundTripScope: RoundTripScope;
+  normalize: { oneWay: Normalizer; roundTrip: Normalizer | null };
+  /** The cabin values the tool takes, where they differ from Flight Compare's own. */
+  cabinInput?: Partial<Record<Cabin, string>>;
   /** Off until the tool works end to end. */
   enabled: boolean;
   /** The tool signs in to the site, so a run may ask for a login or a code. */
@@ -35,7 +48,7 @@ export const SITE_TOOLS: SiteTool[] = [
     kind: "cash",
     oneWay: "tool_e3257cb40c2388c5523aca87d093a091",
     roundTrip: "tool_6a3b3272e28d38bf72801b7437fd0eee",
-    roundTripScope: "round_trip",
+    normalize: { oneWay: normalizeGoogleFlights, roundTrip: normalizeGoogleFlightsRoundTrip },
     enabled: true,
     needsLogin: false,
     // Production runs take one to two minutes, and round trips often longer.
@@ -48,7 +61,7 @@ export const SITE_TOOLS: SiteTool[] = [
     program: "american",
     oneWay: "tool_65883b0821eef8fd9b9ad0c1c76384d1",
     roundTrip: "tool_77468f645784ce7a02e37f99b4fd8566",
-    roundTripScope: "outbound_only",
+    normalize: { oneWay: normalizeAmericanOneWay, roundTrip: normalizeAmericanRoundTrip },
     enabled: true,
     needsLogin: false,
     timeoutSeconds: 180,
@@ -60,7 +73,7 @@ export const SITE_TOOLS: SiteTool[] = [
     program: "delta",
     oneWay: "tool_8c892f491604a217ca39a4463644ec07",
     roundTrip: "tool_2721b4ebfbaea5c91f5fa2fea4beebfc",
-    roundTripScope: "outbound_only",
+    normalize: { oneWay: normalizeDeltaOneWay, roundTrip: normalizeDeltaRoundTrip },
     enabled: true,
     needsLogin: false,
     timeoutSeconds: 180,
@@ -74,7 +87,8 @@ export const SITE_TOOLS: SiteTool[] = [
     program: "united",
     oneWay: "tool_ed898545b7c88650847580ad55f3d001",
     roundTrip: null,
-    roundTripScope: "outbound_only",
+    normalize: { oneWay: normalizeUnited, roundTrip: null },
+    cabinInput: { premium_economy: "premium economy" },
     enabled: false,
     needsLogin: true,
     timeoutSeconds: 300,

@@ -1,0 +1,61 @@
+{
+  "origin": "SFO",
+  "destination": "JFK",
+  "departure_date": "2026-12-08",
+  "return_date": "2026-12-15",
+  "adults": 1,
+  "cabin": "Main",
+  "shop_with_miles": true,
+  "include_basic": false,
+  "nearby_airports": false,
+  "refundable_only": false,
+  "sort": "Best Match",
+  "price_notice": "Prices are round trip, per passenger.",
+  "no_results_reason": null,
+  "applied_filters": null,
+  "more_results": false,
+  "results_url": "https://www.delta.com/flightsearch/search-results",
+  "flights": [
+    {
+      "flight_numbers": [
+        "DL1102",
+        "DL2210"
+      ],
+      "origin": "SFO",
+      "destination": "JFK",
+      "departure_time": "6:05am",
+      "arrival_time": "4:48pm",
+      "arrival_day": null,
+      "duration_minutes": 463,
+      "stops": 1,
+      "connection_airports": [
+        "MSP"
+      ],
+      "cabin": "Delta Main",
+      "miles": 29000,
+      "cash_minor": 1120,
+      "currency": "USD",
+      "price_basis": "Round trip from, per passenger",
+      "badges": []
+    },
+    {
+      "flight_numbers": [
+        "DL432"
+      ],
+      "origin": "SFO",
+      "destination": "JFK",
+      "departure_time": "11:59pm",
+      "arrival_time": "8:25am",
+      "arrival_day": "+1 day",
+      "duration_minutes": 326,
+      "stops": 0,
+      "connection_airports": [],
+      "cabin": "Delta Main",
+      "miles": 50000,
+      "cash_minor": 1120,
+      "currency": "USD",
+      "price_basis": "Round trip from, per passenger",
+      "badges": []
+    }
+  ]
+}

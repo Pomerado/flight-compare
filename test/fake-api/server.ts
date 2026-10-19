@@ -27,8 +27,11 @@ const fixture = (name: string): unknown =>
 
 export const RESULTS = {
   googleFlights: () => fixture("google-flights.json"),
+  googleFlightsRoundTrip: () => fixture("google-flights-round-trip.json"),
   delta: () => fixture("delta-award.json"),
+  deltaRoundTrip: () => fixture("delta-award-round-trip.json"),
   american: () => fixture("american-award.json"),
+  americanRoundTrip: () => fixture("american-award-round-trip.json"),
 };
 
 export type ToolScript = {

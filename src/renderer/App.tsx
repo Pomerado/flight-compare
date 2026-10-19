@@ -175,6 +175,7 @@ function Search({ onReconnect }: { onReconnect: () => void }) {
               <div className="fc-list">
                 <p className="fc-rule">{COPY.results.rule}</p>
                 {roundTrip ? <p className="fc-rule">{COPY.results.roundTripNote}</p> : null}
+                {ask && ask.adults > 1 ? <p className="fc-rule">{COPY.results.passengersNote(ask.adults)}</p> : null}
                 {wide ? (
                   <ComparisonTable
                     columns={TABLE_COLUMNS}

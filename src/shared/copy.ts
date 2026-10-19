@@ -53,7 +53,8 @@ export const COPY = {
     count: (count: number) => (count === 1 ? "1 flight" : `${count} flights`),
     none: "No flights",
     rule: "Sorted by cash price, then by fewest points. Cents per point shows when the same flight has both prices.",
-    roundTripNote: "Cash prices are for the round trip. Award prices are for the outbound flight only.",
+    roundTripNote: "Each row is an outbound flight with the starting price for the whole round trip. Cents per point shows on one-way searches only.",
+    passengersNote: (count: number) => `Prices are totals for ${count} passengers.`,
     columns: {
       flight: "Flight",
       duration: "Duration",

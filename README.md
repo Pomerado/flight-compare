@@ -72,10 +72,13 @@ One visible rule, with no hidden scoring:
 - Flights with only an award price follow, fewest points first.
 - Ties go to fewer stops, then shorter flights, then earlier departures.
 - The best pick is the lowest cash fare. A second pick shows the flight whose points go furthest.
+- Every price is a total for all passengers. Google Flights quotes the whole party; award sites
+  quote miles and taxes per passenger, which the app multiplies by the passenger count.
 - Cents per point is `(cash fare - award taxes) / points`, shown only when both prices are for the
   same one-way trip and the taxes are in the fare's currency.
-- With a return date, Google Flights prices the round trip and the award searches price the
-  outbound flight only. The app labels both and shows no cents per point.
+- With a return date, every site lists outbound flights with a starting price for the whole round
+  trip, and no return flight is picked yet. The app labels these "Round trip" and shows no cents
+  per point. American states each row's price scope; a one-way scope is labelled "Outbound only".
 
 ## Sites
 
@@ -83,8 +86,8 @@ The sites are public Pomerado tools, listed in [`src/shared/tools.ts`](src/share
 has a one-way tool and a round-trip tool. United's award search is in the list but turned off
 while its tool is rebuilt. It needs a United login, which the run asks for on Pomerado's own page.
 
-The award tools' result fields are read as a typed guess until checked against each tool's
-`output_schema` (marked `VERIFY` in [`src/shared/flights.ts`](src/shared/flights.ts)).
+Each tool has its own result shape. [`src/shared/flights.ts`](src/shared/flights.ts) has one
+normalizer per tool, written against that tool's `output_schema` from `GET /v1/tools/{id}`.
 
 ## Development
 
