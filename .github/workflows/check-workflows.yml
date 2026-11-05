@@ -1,0 +1,25 @@
+# Fails when a workflow runs outside code that isn't pinned: an action not at a full commit SHA, a
+# container image without an @sha256 digest, or a download piped into a shell. See
+# scripts/check-workflows.ts. Dependabot moves the action pins (.github/dependabot.yml).
+name: Check workflows
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check-workflows:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 24.22.2
+      - run: node scripts/check-workflows.ts
